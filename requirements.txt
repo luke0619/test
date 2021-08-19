@@ -46,7 +46,6 @@ null==0.6.1
 nulltype==2.3.1
 numpy==1.20.2
 odfpy==1.4.1
-opencv-python==4.5.1.48
 openpyxl==3.0.7
 options==1.4.10
 parse==1.19.0
