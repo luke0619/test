@@ -1,0 +1,1 @@
+web: gunicorn Mosquito.wsgi --log-file -

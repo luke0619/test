@@ -1,0 +1,73 @@
+{% extends 'main/base.html' %}
+{% block title %}登革熱病媒蚊監測網-歷史資料查詢{% endblock %}
+{% block content %}
+{% load static %}
+<section class="section-book">
+                <div class="row">
+                    <div class="book">
+                        <div class="book_form">
+                            <div class="u-center-text u-margin-bottom-medium">
+                                <h2 class="heading-secondary">
+                                    政府資料查詢
+                                </h2>
+                            </div>
+
+                            <form action="{% url 'main:data3' %}" method='GET' enctype="multipart/form-data">
+                                <div class="form_group">
+								<select name="location" class="form_input">
+    							<option value="" selected>請選擇監測站</option>
+    							<option value="0">臺南</option>
+								</select>
+                                </div>
+                                
+                               
+                                <div class="form_group">
+                                    <select name="year" class="form_input">
+                                    <option value="">請選擇年份</option>
+                                    {% for a in num1 %}
+                                    <option value="{{ a }}">{{ a }}</option>
+                                    {% endfor %}
+                                    </select>
+                                </div>
+                                
+                                <div class="form_group">
+                                    <select name="week1" class="form_input">
+                                    <option value="">請選擇起始週</option>
+                                    {% for x in num2 %}
+                                    <option value="{{ x }}">{{ x }}</option>
+                                    {% endfor %}
+                                    </select>
+                                </div>
+                                
+								<div class="form_group">
+                                    <select name="week2" class="form_input">
+                                    <option value="">請選擇結束週</option>
+                                    {% for x in num2 %}
+                                    <option value="{{ x }}">{{ x }}</option>
+                                    {% endfor %}
+                                    </select>
+                                </div>
+                                
+ 								<div class="form_group">
+                                    <select name="type" class="form_input">
+                                    <option value="">請選擇比較分析</option>
+                                    <option value="1">溫度與病例關係圖</option>
+                                    <option value="2">濕度與病例關係圖</option>
+                                     <option value="3">溫度、濕度與病媒蚊的交叉分析圖</option>
+                                    </select>
+                                </div>
+                                
+                                
+                                	<div class="form_group">
+                                        <button class="btn btn-green" >送出 &rarr;</button>
+                                	</div>
+                                	<br>
+                              </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+            </section>
+{% endblock %}

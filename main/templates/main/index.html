@@ -1,0 +1,121 @@
+{% extends 'main/base.html' %}
+{% block title %}登革熱病媒蚊監測網-官方首頁{% endblock %}
+{% block content %}
+{% load static %}
+
+<header class="header">
+
+            <div class="header-text-box">
+                <h1 class="heading-primary">
+                    <span class="heading-primary-main">登革熱病媒蚊監測系統</span>
+                    <span class="heading-primary-sub">Auto monitor photo, no more mosquito</span>
+                </h1>
+
+                <a href="{% url 'main:map'  %}" class="btn btn-white btn-animated">探索本網站</a>
+            </div>
+</header>
+        
+<main>
+        <!-- 專題介紹 -->
+            <section class="section-about">
+                <div class="u-center-text u-margin-bottom-big">
+                    <h2 class="heading-secondary">
+                        登革熱病媒蚊監測系統特色
+                    </h2>
+                </div>
+                
+                <div class="row">
+                    <div class="col-1-of-2">
+
+                        <h3 class="heading-tertiary u-margin-bottom-small">即時偵測</h3>   
+                        <p class="paragraph">
+								利用樹莓派的鏡頭及感測器，捕蚊裝置得以搜集其周圍環境的Co2.O3.PM2.5.溫度等數據以及在捕蚊燈中的蚊子照，透過裝置上的WIFI模組將數據傳到遠端的主機資料庫中.
+                        </p>
+                        <a href="{% url 'main:introduce1'  %}" class="btn-text">瞭解更多 &rarr;</a>
+                    </div>
+                    <div class="col-1-of-2">
+                        <div class="composition">
+                            <img src="{% static 'main/img/train.PNG' %}" alt="photo1" class="composition__photo composition__photo--p1">
+                            <img src="{% static 'main/img/train4.PNG' %}" alt="Photo2" class="composition__photo composition__photo--p2">
+                        </div>
+                    </div>
+                </div>
+                  
+                  
+                  <div class="row">
+                    <div class="col-1-of-2">
+
+                        <h3 class="heading-tertiary u-margin-bottom-small">資料檢索</h3>   
+                        <p class="paragraph">
+								利用地點、年份、月份等進行歷史資料、觀測站的資料搜尋，回傳的結果以圖表化作為網頁的呈現
+                        </p>
+                        <a href="{% url 'main:introduce2'  %}" class="btn-text">瞭解更多 &rarr;</a>
+                    </div>
+                    <div class="col-1-of-2">
+                        <div class="composition">
+                            <img src="{% static 'main/img/visual2.png' %}" alt="Photo2" class="composition__photo composition__photo--p4">
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="row">
+                    <div class="col-1-of-2">
+
+                        <h3 class="heading-tertiary u-margin-bottom-small">預防通報</h3>   
+                        <p class="paragraph">
+								樹莓派蒐集到的數據會定時被樹莓派內部的一支監測程式監測，若數據達到危險標準時，這支程式會將危險訊息發送到政府、衛生機構等單位，達到預測及預防的效果
+                        </p>
+                        <a href="{% url 'main:introduce3'  %}" class="btn-text">瞭解更多 &rarr;</a>
+                    </div>
+                </div>
+            </section>
+	<!-- 系統特色 -->
+            <section class="section-features">
+
+                <div class="row">
+                    <div class="col-1-of-4">
+                        <div class="feature-box">
+                            <i class="feature-box_icon icon-basic-world"></i>
+                            <h3 class="heading-tertiary u-margin-bottom-small">偵測辨識</h3>
+                            <p class="feature-box_text">
+                                使用深度學習自動辨識
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-1-of-4">
+                        <div class="feature-box">
+                            <i class="feature-box_icon icon-basic-compass"></i>
+                            <h3 class="heading-tertiary u-margin-bottom-small">研究分析</h3>
+                            <p class="feature-box_text">
+                                研究數據之間的關聯
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-1-of-4">
+                        <div class="feature-box">
+                            <i class="feature-box_icon icon-basic-map"></i>
+                            <h3 class="heading-tertiary u-margin-bottom-small">收集資訊</h3>
+                            <p class="feature-box_text">
+                                應用樹梅派、感測器
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-1-of-4">
+                        <div class="feature-box">
+                            <i class="feature-box_icon icon-basic-heart"></i>
+                            <h3 class="heading-tertiary u-margin-bottom-small">預防警示</h3>
+                            <p class="feature-box_text">
+                                即時做出預防和處理
+                            </p>
+                        </div>
+                    </div>
+                </div>          
+            </section>
+            <br>
+            <br><br><br><br>
+        </main>
+{% endblock %}

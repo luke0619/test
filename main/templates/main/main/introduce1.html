@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>影像辨識!</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+ 	{% load static %}
+    <link rel="stylesheet" href="{% static 'main/css/icon-font.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+</head>
+ 
+<body>
+{% csrf_token %}
+    <h1>請上傳圖片</h1><input type="file"  id="file" name="file" style="cursor: pointer; padding: 14px 28px;width: 100%;font-size:16px; width:400px;height:300px;"  />
+    
+ 
+    <img id="ewmtp" src="" alt="Red dot" />
+    
+	<div>
+    <button type="button" class="btn btn-primary btn-lg" id="lgbut_computes"  style="font-size:36px; width:200px;height:100px;">送出</button>
+    </div>
+    
+	<div id="result_new" ></div>
+	<script>
+        function ShowResult(data) {
+            var v = data['img64'];
+            var img = document.createElement("img");
+            ewmtp.src = "data:image/jpeg;base64, " + v ;
+        }
+    </script>
+
+	<script>
+        $('#lgbut_computes').click(function () {
+            formdata = new FormData(); //建立一個新的 FormData 物件(目的是送出資料)
+            var file = $("#file")[0].files[0];
+            formdata.append("image", file);
+            $.ajax({
+                url: '/yolo_detect/', //调用django服务器计算函数
+                type: 'POST', //请求类型
+                data: formdata,
+                dataType: 'json', //期望获得的响应类型为json
+                processData: false,
+                contentType: false,
+                success: ShowResult //在请求成功之后调用该回调函数输出结果
+            })
+        })
+    </script>
+</body>
+</html>
