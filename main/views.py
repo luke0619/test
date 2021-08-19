@@ -12,7 +12,7 @@ from calendar import month
 from django.shortcuts import redirect
 from .forms import UploadModelForm
 
-import cv2
+
 import numpy as np
 import pymysql
 
