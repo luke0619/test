@@ -26,9 +26,9 @@ SECRET_KEY = '-^d)f1o$$mp$erfam&-f374hwko^-((g7nanlqnb)(=e!e$m#!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 if 'DYNO' in os.environ:
-    DEBUG = False
+    DEBUG = True
     
-ALLOWED_HOSTS = ['https://mosquit.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -82,8 +82,8 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': ('%(asctime)s [%(process)d] [%(levelname)s] '
-                       'pathname=%(pathname)s lineno=%(lineno)s '
+            'format': ('%(asctime)s [%(process)d] [%(levelname)s] ' +
+                       'pathname=%(pathname)s lineno=%(lineno)s ' +
                        'funcname=%(funcName)s %(message)s'),
             'datefmt': '%Y-%m-%d %H:%M:%S'
         },
@@ -97,22 +97,16 @@ LOGGING = {
             'class': 'logging.NullHandler',
         },
         'console': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             'formatter': 'verbose'
         }
     },
     'loggers': {
-        'django': {
+        'testlogger': {
             'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-        'django.request': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': False,
-        },
+            'level': 'INFO',
+        }
     }
 }
 
@@ -173,8 +167,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, "media")
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'main/static')
+
 STATIC_URL = '/static/'
-STATIC_ROOT = 'staticfiles'
+
+
+STATICFILES_DIRS = [
+    (os.path.join(BASE_DIR), 'main/static')]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 import django_heroku 
 django_heroku.settings(locals())

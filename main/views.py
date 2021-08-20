@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-
+from django.template.response import TemplateResponse
 import json
 from pyecharts import options as opts
 from pyecharts.charts import Bar
@@ -11,7 +11,7 @@ from main.models import local, Photo
 from calendar import month
 from django.shortcuts import redirect
 from .forms import UploadModelForm
-
+import logging
 import numpy as np
 import pymysql
 
@@ -23,10 +23,11 @@ import json            # json字符串使用            # opencv包
 import os              # 执行操作系统命令
 import base64
 from django.http import JsonResponse   # json字符串返回
-
+from django import template
 
 def main(request):
-    return render(request, 'main/index.html', locals())
+    luke = TemplateResponse(request,'main/index.html',{})
+    return luke
 
 def maps(request):
     data = models.test.objects.last()
@@ -90,11 +91,11 @@ face_detector = "haarcascade_frontalface_default.xml"  # 默认放置在项目�
 
 @csrf_exempt #增加装饰器，作用是跳过 csrf 中间件的保护
 def yolo_detect(request):
-    return render(request, 'test.html',locals())
+     return render(request, 'main/index.html', locals())
 
  
 def introduce1(request):
     return render(request, 'main/introduce1.html')
     
 def read_image(request,stream=None, url=None):
-    return render(request, 'test.html',locals())
+     return render(request, 'main/index.html', locals())
