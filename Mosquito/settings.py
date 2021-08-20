@@ -28,7 +28,7 @@ DEBUG = True
 if 'DYNO' in os.environ:
     DEBUG = False
     
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://mosquit.herokuapp.com/']
 
 
 # Application definition
@@ -136,5 +136,5 @@ MEDIA_ROOT=os.path.join(BASE_DIR, "media")
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
-import django_heroku
+import django_heroku 
 django_heroku.settings(locals())
