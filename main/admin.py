@@ -1,6 +1,7 @@
 from django.contrib import admin
 from main import models
 # Register your models here.
+# Register your models here.
 class localadmin(admin.ModelAdmin):
     list_display = ("number","name","year","month","day","temp","RH","Aedes","Culex","Total","time","label",)
     search_fields = ("name",)
